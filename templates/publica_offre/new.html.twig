@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New PublicaOffre{% endblock %}
+
+{% block body %}
+    <h1>Create new PublicaOffre</h1>
+
+    {{ include('publica_offre/_form.html.twig') }}
+
+    <a href="{{ path('app_publica_offre_index') }}">back to list</a>
+{% endblock %}

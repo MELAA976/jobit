@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit PublicaOffre{% endblock %}
+
+{% block body %}
+    <h1>Edit PublicaOffre</h1>
+
+    {{ include('publica_offre/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_publica_offre_index') }}">back to list</a>
+
+    {{ include('publica_offre/_delete_form.html.twig') }}
+{% endblock %}

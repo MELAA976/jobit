@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}OffreUser{% endblock %}
+
+{% block body %}
+    <h1>OffreUser</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ offre_user.id }}</td>
+            </tr>
+            <tr>
+                <th>DateCandidature</th>
+                <td>{{ offre_user.dateCandidature ? offre_user.dateCandidature|date('Y-m-d') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_offre_user_index') }}">back to list</a>
+
+    <a href="{{ path('app_offre_user_edit', {'id': offre_user.id}) }}">edit</a>
+
+    {{ include('offre_user/_delete_form.html.twig') }}
+{% endblock %}
