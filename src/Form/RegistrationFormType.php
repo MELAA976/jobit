@@ -2,10 +2,12 @@
 
 namespace App\Form;
 
+use App\Entity\Entreprise;
 use App\Entity\User;
+use Doctrine\ORM\Mapping\Entity;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
-use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -18,7 +20,16 @@ class RegistrationFormType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+            ->add('nom')
+            ->add('prenom')
+            ->add('date_naissance')
             ->add('email')
+            ->add('adresse')
+            ->add('telephone')
+            ->add('photo')
+            ->add('logo')
+            ->add('presentation')
+            ->add('site_web')
             ->add('agreeTerms', CheckboxType::class, [
                 'mapped' => false,
                 'constraints' => [
@@ -44,7 +55,10 @@ class RegistrationFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('entreprise', ChoiceType::class)
+            ->add('entreprise', EntityType::class, [
+                'class' => Entreprise::class,
+                'choice_label' => 'nom',
+            ])
         ;
     }
 
