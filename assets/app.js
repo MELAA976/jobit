@@ -28,6 +28,11 @@ formChild.forEach(
 typeUser.addEventListener("change", (event)=>{
     
     let valueSelectType = event.target.value;
+
+    //Transformation de la ariable en cookie pour l'enoyer du coté php
+    document.cookie = "userType = "+ valueSelectType; 
+    
+    
    
 switch (valueSelectType) {
   
@@ -48,6 +53,7 @@ switch (valueSelectType) {
                 document.querySelector("#registration_form_adresse").parentNode.style.display = "block";
                 document.querySelector("#registration_form_entreprise").parentNode.style.display = "block";
                 document.querySelector("#registration_form_presentation").parentNode.style.display = "block";
+
             }
         );
 

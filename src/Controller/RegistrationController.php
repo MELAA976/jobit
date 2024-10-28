@@ -24,6 +24,28 @@ class RegistrationController extends AbstractController
             /** @var string $plainPassword */
             $plainPassword = $form->get('plainPassword')->getData();
 
+            //recupereation du type d'utilisateur via le cookies et JavaScript
+            $userType = $_COOKIE['userType'];
+
+
+
+            //attribution des roles 
+            if (isset($userType) && !empty($userType)) {
+
+                switch ($userType) {
+                    case 'candidat':
+                        $user->setRoles(array('ROLE_CANDIDAT'));
+                        break;
+                    case 'recruteur':
+                        $user->setRoles(array('ROLE_RECRUTEUR'));
+                        break;
+                    case 'partenaire':
+                        $user->setRoles(array('ROLE_PARTENAIRE'));
+                        break;
+                }
+            }
+
+
             // encode the plain password
             $user->setPassword($userPasswordHasher->hashPassword($user, $plainPassword));
 

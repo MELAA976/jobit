@@ -71,7 +71,7 @@ final class PublicaOffreController extends AbstractController
     #[Route('/{id}', name: 'app_publica_offre_delete', methods: ['POST'])]
     public function delete(Request $request, PublicaOffre $publicaOffre, EntityManagerInterface $entityManager): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$publicaOffre->getId(), $request->getPayload()->getString('_token'))) {
+        if ($this->isCsrfTokenValid('delete' . $publicaOffre->getId(), $request->getPayload()->getString('_token'))) {
             $entityManager->remove($publicaOffre);
             $entityManager->flush();
         }
