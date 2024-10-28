@@ -45,6 +45,7 @@ switch (valueSelectType) {
                 document.querySelector("#registration_form_telephone").parentNode.style.display = "block";
                 document.querySelector("#registration_form_email").parentNode.style.display = "block";
                 document.querySelector("#registration_form_photo").parentNode.style.display = "block";
+                document.querySelector("#registration_form_adresse").parentNode.style.display = "block";
                 document.querySelector("#registration_form_entreprise").parentNode.style.display = "block";
                 document.querySelector("#registration_form_presentation").parentNode.style.display = "block";
             }
@@ -64,6 +65,7 @@ switch (valueSelectType) {
                 document.querySelector("#registration_form_adresse").parentNode.style.display = "block";
                 document.querySelector("#registration_form_telephone").parentNode.style.display = "block";
                 document.querySelector("#registration_form_email").parentNode.style.display = "block";
+                document.querySelector("#registration_form_date_naissance").parentNode.style.display = "block";
                 document.querySelector("#registration_form_photo").parentNode.style.display = "block";
                 document.querySelector("#registration_form_presentation").parentNode.style.display = "block";
             }
@@ -76,7 +78,16 @@ switch (valueSelectType) {
             formChild.forEach(
                 (elem)=>{
                     elem.parentNode.style.display = "none";
+
+                    document.querySelector("#registration_form_nom").parentNode.style.display = "block";
                     document.querySelector("#registration_form_prenom").parentNode.style.display = "block";
+                    document.querySelector("#registration_form_adresse").parentNode.style.display = "block";
+                    document.querySelector("#registration_form_telephone").parentNode.style.display = "block";
+                    document.querySelector("#registration_form_email").parentNode.style.display = "block";
+                    document.querySelector("#registration_form_logo").parentNode.style.display = "block";
+                    document.querySelector("#registration_form_presentation").parentNode.style.display = "block";
+                    document.querySelector("#registration_form_site_web").parentNode.style.display = "block";
+                    document.querySelector("#registration_form_date_naissance").parentNode.readOnly = true;
                 }
             );
             

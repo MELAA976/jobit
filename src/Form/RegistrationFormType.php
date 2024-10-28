@@ -4,10 +4,10 @@ namespace App\Form;
 
 use App\Entity\Entreprise;
 use App\Entity\User;
-use Doctrine\ORM\Mapping\Entity;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -22,7 +22,14 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('nom')
             ->add('prenom')
-            ->add('date_naissance')
+            ->add('date_naissance', DateType::class, [
+
+                'widget' => 'single_text',
+                // this is actually the default format for single_text
+                'format' => 'yyyy-MM-dd',
+                'html5' => true,
+                'required' => false
+            ])
             ->add('email')
             ->add('adresse')
             ->add('telephone')
