@@ -1,4 +1,21 @@
+
+
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+
+     {{ form_row(form.intituler) }}
+     {{ form_row(form.description) }}
+    {#{ form_row(form.datePublication )}#}
+    {#{ form_row(form.dateModification) }#}
+     {#% if app.request.pathInfo == "/publica/offre/new" %}
+        {{ form_row(form.datePublication) }} {#a #}
+    {#% else %}
+        {{ form_row(form.dateModification) }}
+
+     {% endif %#}
+
+     {{ form_row(form.lieu) }}
+     {{ form_row(form.typeContrat) }}
+     {{ form_row(form.duree) }}
+     {{ form_row(form.category) }}
+    <button class="btn">{{ button_label|default('Enregistrer') }}</button>
 {{ form_end(form) }}

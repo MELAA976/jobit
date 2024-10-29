@@ -9,31 +9,37 @@ import './styles/app.css';
 
 console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
 
+
+
+if (document.title == "Register") {
+
+    
 let typeUser = document.querySelector("#typeUser");
 let formInscription = document.querySelector("#formInscription");
 let formChild = document.querySelectorAll(".formChild");
-console.log(formChild);
 
 
 
 formInscription.style.display = "none";
+
 formChild.forEach(
     (elem)=>{
         //console.log(elem);
         elem.parentNode.style.display = "none";
         
-    }
+     }
 );
+
 
 typeUser.addEventListener("change", (event)=>{
     
-    let valueSelectType = event.target.value;
-
-    //Transformation de la ariable en cookie pour l'enoyer du coté php
+    
+    let valueSelectType = typeUser.value;
+    console.log(valueSelectType);
+    
+    //Transformation de la variable en cookie pour l'enoyer du coté php
     document.cookie = "userType = "+ valueSelectType; 
-    
-    
-   
+
 switch (valueSelectType) {
   
     case "recruteur":
@@ -100,9 +106,34 @@ switch (valueSelectType) {
         break;
     default:
         formInscription.style.display = "none";
-
         break;
    }
     
 })
+
+}
+
+
+if (document.title == "New PublicaOffre") {
+    
+    //creation de la condition d'affichage de  la duree de contrant en CDD
+    let typeContrat = document.getElementById("publica_offre_typeContrat");
+    let dureeCdd = document.getElementById("publica_offre_duree");
+    //console.log(typeContrat);
+
+    typeContrat.addEventListener("change", ()=>{
+
+        //console.log(typeContrat.value);
+
+        if (typeContrat.value == "1") { //pour value = CDD
+            dureeCdd.parentNode.style.display = "none";
+            dureeCdd.value = "";
+        }else{ //pour value = CDD
+            dureeCdd.parentNode.style.display = "block";
+        }
+ })
+}
+
+
+
 
