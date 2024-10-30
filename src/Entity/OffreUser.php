@@ -19,7 +19,7 @@ class OffreUser
 
     #[ORM\ManyToOne(inversedBy: 'offreUsers')]
     #[ORM\JoinColumn(nullable: false)]
-    private ?publicaOffre $offre = null;
+    private ?PublicaOffre $offre = null;
 
     #[ORM\ManyToOne(inversedBy: 'offreUsers')]
     #[ORM\JoinColumn(nullable: false)]
@@ -42,12 +42,12 @@ class OffreUser
         return $this;
     }
 
-    public function getOffre(): ?publicaOffre
+    public function getOffre(): ?PublicaOffre
     {
         return $this->offre;
     }
 
-    public function setOffre(?publicaOffre $offre): static
+    public function setOffre(?PublicaOffre $offre): static
     {
         $this->offre = $offre;
 

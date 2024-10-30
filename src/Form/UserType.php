@@ -2,37 +2,44 @@
 
 namespace App\Form;
 
-use App\Entity\OffreUser;
-use App\Entity\publicaOffre;
+use App\Entity\Entreprise;
 use App\Entity\User;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class OffreUserType extends AbstractType
+class UserType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            /*->add('dateCandidature', null, [
+            ->add('email')
+            ->add('roles')
+            ->add('password')
+            ->add('nom')
+            ->add('prenom')
+            ->add('dateNaissance', null, [
                 'widget' => 'single_text',
             ])
-            ->add('offre', EntityType::class, [
-                'class' => publicaOffre::class,
+            ->add('adresse')
+            ->add('telephone')
+            ->add('photo')
+            ->add('token')
+            ->add('logo')
+            ->add('presentation')
+            ->add('siteWeb')
+            ->add('entreprise', EntityType::class, [
+                'class' => Entreprise::class,
                 'choice_label' => 'id',
             ])
-            ->add('user', EntityType::class, [
-                'class' => User::class,
-                'choice_label' => 'id',
-            ])*/
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => OffreUser::class,
+            'data_class' => User::class,
         ]);
     }
 }

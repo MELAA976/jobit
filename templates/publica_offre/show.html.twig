@@ -4,7 +4,6 @@
 
 {% block body %}
     <h1>PublicaOffre</h1>
-    
     <table class="table">
         <tbody>
             <tr>
@@ -41,6 +40,13 @@
     <a href="{{ path('app_publica_offre_index') }}">back to list</a>
 
     <a href="{{ path('app_publica_offre_edit', {'id': publica_offre.id}) }}">edit</a>
+    
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+            {# verification de l'etat de postullation  #}
+            {# verifier si l'utilisateur actuelle a deja postuller a cette offre et desactiver le boutton #}
+            <input type="submit" value="Postuler" {% if postule %}disabled="disabled"{% endif %}>
+    {{ form_end(form) }}
 
     {{ include('publica_offre/_delete_form.html.twig') }}
 {% endblock %}

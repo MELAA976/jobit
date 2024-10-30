@@ -32,7 +32,6 @@ final class OffreUserController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
 
             $offreUser->setDateCandidature(new \DateTime());
-            dd($offreUser);
             $entityManager->persist($offreUser);
             $entityManager->flush();
 
