@@ -6,10 +6,12 @@ use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+
 
 class UserCrudController extends AbstractCrudController
 {
@@ -45,7 +47,7 @@ class UserCrudController extends AbstractCrudController
             TextField::new(propertyName: 'logo')->setLabel(label: 'Logo')->hideWhenUpdating(),
             TextField::new(propertyName: 'presentation')->setLabel(label: 'Presentation')->hideWhenUpdating(),
             TextField::new(propertyName: 'site_web')->setLabel(label: 'site web')->hideWhenUpdating(),
-            IdField::new(propertyName: 'entreprise_id')->setLabel(label: 'entreprise_id')->hideWhenUpdating(),
+            AssociationField::new(propertyName: 'entreprise')->setLabel(label: 'Entreprise')->hideWhenUpdating(),
         ];
     }
 }

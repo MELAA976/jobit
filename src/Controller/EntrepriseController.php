@@ -30,6 +30,14 @@ final class EntrepriseController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            $dataForm = $form->getData();
+
+            //gestion du logo d'entreprise
+            $logoEnt = $form['logo']->getData(); //selection du logo
+            $fileName = uniqid() . '.' . $logoEnt->guessExtension(); // creation du nom du fichier
+            $dataForm->setLogo($fileName); //affectation du nom au fichier
+            $logoEnt->move($this->getParameter('logo_entreprise'), $fileName); //deplacement du fichier dans son dossier
             $entityManager->persist($entreprise);
             $entityManager->flush();
 
@@ -57,7 +65,19 @@ final class EntrepriseController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            
+            $dataForm = $form->getData();
+            //gestion du logo d'entreprise
+            $logoEnt = $form['logo']->getData(); //selection du logo
+            $fileName = uniqid() . '.' . $logoEnt->guessExtension(); // creation du nom du fichier
+            $dataForm->setLogo($fileName); //affectation du nom au fichier
+            $logoEnt->move($this->getParameter('logo_entreprise'), $fileName); //deplacement du fichier dans son dossier
+            $entityManager->persist($entreprise);
             $entityManager->flush();
+            
+            
+            $entityManager->flush();
+
 
             return $this->redirectToRoute('app_entreprise_index', [], Response::HTTP_SEE_OTHER);
         }

@@ -8,6 +8,8 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -33,8 +35,41 @@ class RegistrationFormType extends AbstractType
             ->add('email')
             ->add('adresse')
             ->add('telephone')
-            ->add('photo')
-            ->add('logo')
+            ->add(
+                'photo',
+                FileType::class,
+                [
+                    'required' => false,
+                    'constraints' => [
+                        new File([
+                            //'maxSize' => '1024k',
+                            'mimeTypes' => [
+                                'image/*' //format accepter
+                            ],
+                            'mimeTypesMessage' => 'telecharger une image valide', //message de non conformiter de type de fichier
+                        ])
+                    ]
+
+                ],
+
+            )
+            ->add(
+                'logo',
+                FileType::class,
+                [
+                    'required' => false,
+                    'constraints' => [
+                        new File([
+                            //'maxSize' => '1024k',
+                            'mimeTypes' => [
+                                'image/*'
+                            ],
+                            'mimeTypesMessage' => 'telecharger une image valide',
+                        ])
+                    ]
+
+                ]
+            )
             ->add('presentation')
             ->add('site_web')
             ->add('agreeTerms', CheckboxType::class, [
