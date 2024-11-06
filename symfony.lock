@@ -35,6 +35,9 @@
             "ref": "b131e6cbfe1b898a508987851963fff485986285"
         }
     },
+    "etshy/php-zip-bundle": {
+        "version": "0.3.1"
+    },
     "phpunit/phpunit": {
         "version": "9.6",
         "recipe": {
@@ -320,6 +323,9 @@
         "files": [
             "./config/packages/reset_password.yaml"
         ]
+    },
+    "symfonycasts/sass-bundle": {
+        "version": "v0.8.1"
     },
     "twig/extra-bundle": {
         "version": "v3.13.0"
