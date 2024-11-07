@@ -1,7 +1,38 @@
 header{
-    width: 100%;
-
-    & > nav{
-        background-color: red;
+    grid-area: nav;
+& > .nav {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    background-color: $colorWhite !important;
+    & > .container{
+        & > .logo{
+            
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 100px;
+            margin-right: 50px;
+            & > i{
+                color: $colorBlue;
+                font-size: 30px;
+            }
+        }
     }
+}
+}
+
+.menu{
+    width: 80%;
+}
+
+.link{
+    width: 200px;
+    display: flex;
+    justify-content: space-around;
+    &__connect{
+        @include btn($colorBlue);
+    }
+
+
 }

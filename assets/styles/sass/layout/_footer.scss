@@ -1,0 +1,19 @@
+footer{
+    grid-area: footer;
+    background-color: $colorWhite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    & > .footer{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+    & > .footer__logo{
+        margin: 0px;
+        padding: 0px;
+    }
+        
+    }
+}
