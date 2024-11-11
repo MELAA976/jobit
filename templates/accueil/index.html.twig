@@ -3,5 +3,19 @@
 {% block title %}Accueil{% endblock %}
 
 {% block body %}
-
+    <div class="accueil">
+    <div class="accueil__title-connect">
+        <div class="accueil__title-connect__title">
+            <h3>Lorem ipsum dolor sit amet, consectetur adipiscing elit</h3>
+        </div>
+        <div class="accueil__title-connect__connect">
+            {% if app.user %}
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Exercitationem, eum.</p>
+            {% else %}
+                <button class="link__connect">Connexion</button>
+            {% endif %}
+            
+        </div>
+    </div>
+    </div>
 {% endblock %}

@@ -1,0 +1,39 @@
+.accueil{
+    width: 100%;
+    height: 100%;
+    background-color: green;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    &__title-connect{
+        background-color: yellowgreen;
+        width: 60%;
+        height: 30%;
+        display: flex;
+        flex-direction: row;
+        width: 60%;
+        &__title{
+            width: 50%;
+            flex-wrap: wrap;
+            background-color: blue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            & > h3{
+                text-align: center;
+            }
+        }
+        &__connect{
+            width: 50%;
+            flex-wrap: wrap;
+            background-color: brown;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            
+        }
+
+
+    }
+}
