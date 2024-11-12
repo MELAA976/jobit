@@ -1,11 +1,28 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}PublicaOffre index{% endblock %}
+{% block title %}Offres{% endblock %}
 
 {% block body %}
-    <h1>PublicaOffre index</h1>
+    <h1>Les Offres</h1>
+    {# <pre>
+        {{ dump(publica_offres) }}
+    </pre> #}
+    
+    <div class = "offre">
+        <div class = "offre__search"></div>
+        <div class="offre__result">
+            {% for publica_offre in publica_offres %}
+            {# {% dump(publica_offre.user.entreprise.logo)%} #}
+            <div class = "offre__result__item">
+                <div class = "offre__result__item__logo">
+                    <img src={{ asset('uploads/images/logo_entreprises/'~ publica_offre.user.entreprise.logo ) }} alt=""> 
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
 
-    <table class="table">
+    {# <table class="table">
         <thead>
             <tr>
                 <th>type de contrat</th>
@@ -23,7 +40,7 @@
             <tr>
                 <td>{{ publica_offre.typeContrat.nom }}</td>
                 <td>{{ publica_offre.intituler }}</td>
-                <td>{{ publica_offre.description }}</td>
+                <td>{{ publica_offre.user.entreprise }}</td>
                 <td>{{ publica_offre.datePublication ? publica_offre.datePublication|date('Y-m-d') : '' }}</td>
                 <td>{{ publica_offre.dateModification ? publica_offre.dateModification|date('Y-m-d') : '' }}</td>
                 <td>{{ publica_offre.lieu }}</td>
@@ -41,5 +58,5 @@
         </tbody>
     </table>
 
-    <a href="{{ path('app_publica_offre_new') }}">Create new</a>
+    <a href="{{ path('app_publica_offre_new') }}">Create new</a> #}
 {% endblock %}

@@ -1,19 +1,24 @@
-footer{
-    grid-area: footer;
-    background-color: $colorWhite;
+footer {
+  grid-area: footer;
+  background-color: $colorWhite;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  & > .footer {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
     height: 100%;
-    & > .footer{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 100%;
-    & > .footer__logo{
-        margin: 0px;
-        padding: 0px;
+    width: 20%;
+    & > a{
+            text-decoration: none;
+            color: $colorGris;
+        }
+    & > .footer__logo {
+      margin: 0px;
+      padding: 0px;
+      color: $colorGris;
     }
-        
-    }
+  }
 }

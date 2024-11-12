@@ -23,7 +23,6 @@ final class PublicaOffreController extends AbstractController
     public function index(PublicaOffreRepository $publicaOffreRepository): Response
     {
         
-
         return $this->render('publica_offre/index.html.twig', [
             'publica_offres' => $publicaOffreRepository->findAll(),
         ]);

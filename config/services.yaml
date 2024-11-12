@@ -5,9 +5,9 @@
 # https://symfony.com/doc/current/best_practices.html#use-parameters-for-application-configuration
 parameters:
     # les chemins des dossier des images 
-    photo_profiles: "%kernel.project_dir%/public/uploads/images/photo_profiles"
-    logo_entreprise: "%kernel.project_dir%/public/uploads/images/logo_entreprises"
-    logo_partenaires: "%kernel.project_dir%/public/uploads/images/logo_partenaires"
+    photo_profiles: "%kernel.project_dir%/assets/uploads/images/photo_profiles"
+    logo_entreprise: "%kernel.project_dir%/assets/uploads/images/logo_entreprises"
+    logo_partenaires: "%kernel.project_dir%/assets/uploads/images/logo_partenaires"
 
 
 services:
