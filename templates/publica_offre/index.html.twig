@@ -17,6 +17,15 @@
                 <div class = "offre__result__item__logo">
                     <img src={{ asset('uploads/images/logo_entreprises/'~ publica_offre.user.entreprise.logo ) }} alt=""> 
                 </div>
+                <div class ="offre__result__item__info">
+                    <div class = class = "offre__result__item__info__txt">
+                        <h3>{{publica_offre.intituler}}</h3>
+                        <p class = "offre__result__item__info__txt--type">{{publica_offre.typeContrat.nom}}</p>
+                        <p class = "offre__result__item__info__txt--date">{{publica_offre.datePublication ? publica_offre.datePublication|date('Y-m-d') : '' }}</p>
+                        <p class = "offre__result__item__info__txt--descript">{{publica_offre.description}}</p>
+                    </div>
+                    
+                </div>
             </div>
             {% endfor %}
         </div>
@@ -56,7 +65,7 @@
             </tr>
         {% endfor %}
         </tbody>
-    </table>
+    </table>#}
 
-    <a href="{{ path('app_publica_offre_new') }}">Create new</a> #}
+    <a href="{{ path('app_publica_offre_new') }}">Create new</a> 
 {% endblock %}
