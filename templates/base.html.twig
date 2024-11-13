@@ -26,10 +26,9 @@
 		{% endblock %}
 	</head>
 	<body>
-		{# {{ include('partials/header.html.twig') }} #}
+		{{ include('partials/header.html.twig') }}
 
-
-		<header>
+		{# <header>
 			<nav class="navbar navbar-expand-lg bg-body-tertiary nav">
 				<div class="container">
 					<a class="logo navbar-brand" href="{{ path('app_accueil')}}">
@@ -78,22 +77,19 @@
 					</div>
 				</div>
 			</nav>
-		</header>
+		</header> #}
 
 
-		<div class="containerBody"> {% block body %}{% endblock %}
-			</div>
+		<div class="containerBody"> {% block body %}{% endblock %}</div>
 
-			{# {# {% block footer %}
-						{{ include('partials/footer.html.twig') }}
-			    	{% endblock %} } #}
+			
 
-			<footer>
+			{# <footer>
 				<div class="footer">
 					<a href="#" class="footer__mention">Mention legale</a>
 					<p class="footer__logo">@JOB-IT</p>
 				</div>
-			</footer>
-
+			</footer> #}
+		{{ include('partials/footer.html.twig') }}
 		</body>
 	</html>

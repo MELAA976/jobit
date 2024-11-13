@@ -1,37 +1,81 @@
-.offre{
+.offre {
+  width: 100%;
+  height: 100%;
+  display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    
+  .offre__search {
+    background-color: green;
     width: 100%;
-    height: 100%;
+    height: 50px;
+    
+  }
+
+  .offre__result {
+    width: 90%;
+    height: 80%;
     background-color: $colorBGSOmbre;
-    &__search{
-        background-color: blue;
-        width: 100%;
-        height: 10%;
-    }
-    &__result{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    &__item {
+      max-width: 400px;
+      max-height: 260px;
+
+      &__card {
+        height: 100%;
         display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        width: 100%;
-        height: 83%;
-        &__item{
-            width: 400px;
-            height: 250px;
-            display: flex;
-            flex-direction: column;
-            background-color: green;
-
-            &__logo{
-                width: 100%;
-                height: 60%;
-                
-                & > img{
-                    object-fit: cover;
-                    width: 100%;
-                }
-            }
+        align-items: center;
+        & > img {
+          max-width: 40%;
+          object-fit: cover;
+          object-fit: scale-down;
+          //transform: scale(0.5);
         }
-        
+        &__describ {
+          height: 100%;
+          padding: 5px;
+          width: 100%;
+          border: 0px;
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          justify-content: space-around;
+          &__txt {
+            width: 70%;
+
+            & > p {
+              white-space: nowrap;
+              width: 100%;
+              overflow: hidden;
+              text-overflow: ellipsis;
+            }
+          }
+
+          &__btn {
+            
+            & > a {
+                
+              & > button{
+                width: 50px;
+                height: 50px;
+                border: none;
+                background-color: $colorBlue;
+                border-radius: 50%;
+
+                & > i{
+                    color: white;
+                    font-size: 25px;
+                }
+                
+              }
+            }
+          }
+        }
+      }
     }
-
-
+  }
 }

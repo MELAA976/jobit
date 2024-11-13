@@ -1,71 +1,47 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Offres{% endblock %}
+{% block title %}Offres
+{% endblock %}
+
 
 {% block body %}
-    <h1>Les Offres</h1>
-    {# <pre>
-        {{ dump(publica_offres) }}
-    </pre> #}
+	<div class="offre">
     
-    <div class = "offre">
-        <div class = "offre__search"></div>
-        <div class="offre__result">
-            {% for publica_offre in publica_offres %}
-            {# {% dump(publica_offre.user.entreprise.logo)%} #}
-            <div class = "offre__result__item">
-                <div class = "offre__result__item__logo">
-                    <img src={{ asset('uploads/images/logo_entreprises/'~ publica_offre.user.entreprise.logo ) }} alt=""> 
-                </div>
-                <div class ="offre__result__item__info">
-                    <div class = class = "offre__result__item__info__txt">
-                        <h3>{{publica_offre.intituler}}</h3>
-                        <p class = "offre__result__item__info__txt--type">{{publica_offre.typeContrat.nom}}</p>
-                        <p class = "offre__result__item__info__txt--date">{{publica_offre.datePublication ? publica_offre.datePublication|date('Y-m-d') : '' }}</p>
-                        <p class = "offre__result__item__info__txt--descript">{{publica_offre.description}}</p>
-                    </div>
-                    
-                </div>
-            </div>
-            {% endfor %}
+		<div class="offre__search">
+        <a href="{{ path('app_publica_offre_new') }}">Create new</a>
         </div>
-    </div>
 
-    {# <table class="table">
-        <thead>
-            <tr>
-                <th>type de contrat</th>
-                <th>Intituler</th>
-                <th>Description</th>
-                <th>DatePublication</th>
-                <th>DateModification</th>
-                <th>Lieu</th>
-                <th>Duree</th>
-                <th>actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for publica_offre in publica_offres %}
-            <tr>
-                <td>{{ publica_offre.typeContrat.nom }}</td>
-                <td>{{ publica_offre.intituler }}</td>
-                <td>{{ publica_offre.user.entreprise }}</td>
-                <td>{{ publica_offre.datePublication ? publica_offre.datePublication|date('Y-m-d') : '' }}</td>
-                <td>{{ publica_offre.dateModification ? publica_offre.dateModification|date('Y-m-d') : '' }}</td>
-                <td>{{ publica_offre.lieu }}</td>
-                <td>{{ publica_offre.duree }}</td>
-                <td>
-                    <a href="{{ path('app_publica_offre_show', {'id': publica_offre.id}) }}">Ouvrir</a>
-                    <a href="{{ path('app_publica_offre_edit', {'id': publica_offre.id}) }}">modifier</a>
-                </td>
-            </tr>
-        {% else %}
-            <tr>
-                <td colspan="8">no records found</td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>#}
+		<div class="row row-cols-1 row-cols-md-3 g-4 offre__result">
 
-    <a href="{{ path('app_publica_offre_new') }}">Create new</a> 
+			{% for publica_offre in publica_offres %}
+				<div class="offre__result__item">
+					<div class="card offre__result__item__card">
+						<img src={{ asset('uploads/images/logo_entreprises/'~ publica_offre.user.entreprise.logo ) }} alt="" class="card-img-top" alt="">
+						<div class="card offre__result__item__card__describ">
+							<div class="offre__result__item__card__describ__txt">
+								<h5 class="card-title">{{publica_offre.intituler}}</h5>
+								<h5 class="card-title">{{publica_offre.datePublication ? publica_offre.datePublication|date('d.m.Y') : '' }}</h5>
+								<p class="card-text">{{publica_offre.description}}</p>
+							</div>
+							<div class="offre__result__item__card__describ__btn">
+								<a href="{{ path('app_publica_offre_show', {'id': publica_offre.id}) }}">
+                                <button>
+                                    <i class="fa-solid fa-arrow-right"></i>
+                                </button>
+									
+								</a>
+							</div>
+						</div>
+
+					</div>
+				</div>
+			</div>
+
+			{# {% else %}
+						<p colspan="8">no records found</p> #}
+		{% endfor %}
+	</div>
+
+
+	
 {% endblock %}
