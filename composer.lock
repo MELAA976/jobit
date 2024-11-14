@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "3da059f8707fde828a728a614bf00937",
+    "content-hash": "b437a73d451b0b7ce1583a5709962220",
     "packages": [
         {
             "name": "composer/semver",
@@ -7760,16 +7760,16 @@
         },
         {
             "name": "symfonycasts/sass-bundle",
-            "version": "v0.8.1",
+            "version": "v0.8.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/SymfonyCasts/sass-bundle.git",
-                "reference": "4637a176b5adfb03f83c409c3f9f566e30426318"
+                "reference": "99d9b3ec1b436c7038ded6a3e38f2b1d65240e21"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/SymfonyCasts/sass-bundle/zipball/4637a176b5adfb03f83c409c3f9f566e30426318",
-                "reference": "4637a176b5adfb03f83c409c3f9f566e30426318",
+                "url": "https://api.github.com/repos/SymfonyCasts/sass-bundle/zipball/99d9b3ec1b436c7038ded6a3e38f2b1d65240e21",
+                "reference": "99d9b3ec1b436c7038ded6a3e38f2b1d65240e21",
                 "shasum": ""
             },
             "require": {
@@ -7809,9 +7809,9 @@
             ],
             "support": {
                 "issues": "https://github.com/SymfonyCasts/sass-bundle/issues",
-                "source": "https://github.com/SymfonyCasts/sass-bundle/tree/v0.8.1"
+                "source": "https://github.com/SymfonyCasts/sass-bundle/tree/v0.8.2"
             },
-            "time": "2024-10-17T10:46:06+00:00"
+            "time": "2024-10-22T16:58:17+00:00"
         },
         {
             "name": "twig/extra-bundle",

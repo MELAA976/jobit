@@ -6,42 +6,44 @@
 
 {% block body %}
 	<div class="offre">
-    
-		<div class="offre__search">
-        <a href="{{ path('app_publica_offre_new') }}">Create new</a>
-        </div>
+		<div class="offre__container">
+			<div class="offre__container__search">
+				<a href="{{ path('app_publica_offre_new') }}"><button>Ajouter une Offre</button></a>
+			</div>
 
-		<div class="row row-cols-1 row-cols-md-3 g-4 offre__result">
-
-			{% for publica_offre in publica_offres %}
-				<div class="offre__result__item">
-					<div class="card offre__result__item__card">
+			<div class="offre__container__result">
+				{% for publica_offre in publica_offres %}
+					<div class="card offre__container__result__item">
 						<img src={{ asset('uploads/images/logo_entreprises/'~ publica_offre.user.entreprise.logo ) }} alt="" class="card-img-top" alt="">
-						<div class="card offre__result__item__card__describ">
-							<div class="offre__result__item__card__describ__txt">
-								<h5 class="card-title">{{publica_offre.intituler}}</h5>
-								<h5 class="card-title">{{publica_offre.datePublication ? publica_offre.datePublication|date('d.m.Y') : '' }}</h5>
-								<p class="card-text">{{publica_offre.description}}</p>
+						<div class="offre__container__result__item__describ">
+							<div class="card offre__container__result__item__describ__txt">
+								<h5 class=" offre__container__result__item__describ__txt--intit card-title">{{publica_offre.intituler}}</h5>
+								<h5 class=" offre__container__result__item__describ__txt--type card-title">{{publica_offre.typeContrat.nom}}</h5>
+								
+								<h5 class=" offre__container__result__item__describ__txt--datePublic card-title">{{publica_offre.datePublication 
+								? publica_offre.datePublication|date('d.m.Y') : '' }}</h5>
+								<h5 class=" offre__container__result__item__describ__txt--type card-title">{{publica_offre.lieu}}</h5>
+								<h5 class=" offre__container__result__item__describ__txt--duree card-title">{{publica_offre.duree 
+								? publica_offre.duree: '' }}</h5>
+								{# <p class="card-text">{{publica_offre.description}}</p> #}
 							</div>
-							<div class="offre__result__item__card__describ__btn">
+
+							<div class="offre__container__result__item__describ__btn">
 								<a href="{{ path('app_publica_offre_show', {'id': publica_offre.id}) }}">
-                                <button>
-                                    <i class="fa-solid fa-arrow-right"></i>
-                                </button>
-									
+									<button>
+										<i class="fa-solid fa-arrow-right"></i>
+									</button>
+
 								</a>
 							</div>
 						</div>
 
 					</div>
-				</div>
+				{% endfor %}
 			</div>
 
-			{# {% else %}
-						<p colspan="8">no records found</p> #}
-		{% endfor %}
+
+		</div>
 	</div>
+	{% endblock %}
 
-
-	
-{% endblock %}

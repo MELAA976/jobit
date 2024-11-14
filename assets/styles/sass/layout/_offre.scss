@@ -3,34 +3,47 @@
   height: 100%;
   display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-around;
     align-items: center;
     
-  .offre__search {
-    background-color: green;
-    width: 100%;
-    height: 50px;
-    
-  }
-
-  .offre__result {
-    width: 90%;
-    height: 80%;
+  .offre__container {
+    width: 80%;
+    height: 90%;
     background-color: $colorBGSOmbre;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
-    &__item {
-      max-width: 400px;
-      max-height: 260px;
+    border-radius: 20px;
+    overflow: hidden;
+    &__search{
+      width: 100%;
+      height: 10%;
+      & > a{
+        & > button{
+          @include btn($colorBlue, 180px);
+        }
+      }
+    }
+    
+    &__result {
+      width: 100%;
+      height: 90%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+      flex-wrap: wrap;
 
-      &__card {
-        height: 100%;
+      &__item {
+        min-width: 400px;
+        max-width: 400px;
+        height: 260px;
         display: flex;
         align-items: center;
         & > img {
-          max-width: 40%;
+          padding: 10px;
+          width: 50%;
+          max-width: 130px;
           object-fit: cover;
           object-fit: scale-down;
           //transform: scale(0.5);
@@ -46,13 +59,22 @@
           justify-content: space-around;
           &__txt {
             width: 70%;
-
-            & > p {
-              white-space: nowrap;
-              width: 100%;
-              overflow: hidden;
-              text-overflow: ellipsis;
+            height: 90%;
+            border: none;
+            
+            &--intit{
+              font-weight: bolder;
             }
+            &--datePublic{
+              font-size: 12px;
+              font-weight: bolder;
+            }
+            // & > p {
+            //   white-space: nowrap;
+            //   width: 100%;
+            //   overflow: hidden;
+            //   text-overflow: ellipsis;
+            // }
           }
 
           &__btn {
@@ -65,7 +87,7 @@
                 border: none;
                 background-color: $colorBlue;
                 border-radius: 50%;
-
+          
                 & > i{
                     color: white;
                     font-size: 25px;

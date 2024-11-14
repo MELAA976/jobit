@@ -1,7 +1,7 @@
-@mixin btn($color) {
+@mixin btn($color, $taille: 130px) {
     background-color: $color;
     border: none;
-    width: 130px;
+    width: $taille;
     height: 40px;
     color: white;
     border-radius: 10px;

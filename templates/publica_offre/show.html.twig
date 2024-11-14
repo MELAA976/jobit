@@ -1,9 +1,46 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}PublicaOffre{% endblock %}
+{% block title %}Offre{% endblock %}
 
 {% block body %}
-    <h1>PublicaOffre</h1>
+    <div class = "offreItem">
+
+        <div class = "offreItem__entreprise">
+        <h1>{{publica_offre.user.entreprise.nom}}</h1>
+        <p>{{publica_offre.user.entreprise.presentation}}</p>
+        </div>
+
+        <div class = "offreItem__describ">
+            <div class = "offreItem__describ--img">
+                <img src={{ asset('uploads/images/logo_entreprises/'~ publica_offre.user.entreprise.logo ) }} alt="">
+            </div>
+            <div class = "offreItem__describ--txt">
+                <h3 class = "offreItem__describ--txt__cat"></h3>
+                <h2 class = "offreItem__describ--txt__intit"></h2>
+                <p></p>
+                <div class = "offreItem__describ--txt__"></div>
+            </div>
+        </div>
+    </div>
+
+    <a href="{{ path('app_publica_offre_index') }}">back to list</a>
+
+    <a href="{{ path('app_publica_offre_edit', {'id': publica_offre.id}) }}">edit</a>
+    
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+            {# verification de l'etat de postullation  #}
+            {# verifier si l'utilisateur actuelle a deja postuller a cette offre et desactiver le boutton #}
+            <input type="submit" value="Postuler" {% if postule %}disabled="disabled"{% endif %}>
+    {{ form_end(form) }}
+
+    {{ include('publica_offre/_delete_form.html.twig') }}
+{% endblock %}
+
+
+
+
+{# <h1>PublicaOffre</h1>
     <table class="table">
         <tbody>
             <tr>
@@ -39,14 +76,4 @@
 
     <a href="{{ path('app_publica_offre_index') }}">back to list</a>
 
-    <a href="{{ path('app_publica_offre_edit', {'id': publica_offre.id}) }}">edit</a>
-    
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-            {# verification de l'etat de postullation  #}
-            {# verifier si l'utilisateur actuelle a deja postuller a cette offre et desactiver le boutton #}
-            <input type="submit" value="Postuler" {% if postule %}disabled="disabled"{% endif %}>
-    {{ form_end(form) }}
-
-    {{ include('publica_offre/_delete_form.html.twig') }}
-{% endblock %}
+    <a href="{{ path('app_publica_offre_edit', {'id': publica_offre.id}) }}">edit</a> #}
