@@ -15,10 +15,16 @@
                 <img src={{ asset('uploads/images/logo_entreprises/'~ publica_offre.user.entreprise.logo ) }} alt="">
             </div>
             <div class = "offreItem__describ--txt">
-                <h3 class = "offreItem__describ--txt__cat"></h3>
-                <h2 class = "offreItem__describ--txt__intit"></h2>
-                <p></p>
-                <div class = "offreItem__describ--txt__"></div>
+            <div>
+                
+            </div>
+                <h3 class = "offreItem__describ--txt__cat"><a href="">{{publica_offre.category.nom}}</a></h3>
+                <h2 class = "offreItem__describ--txt__intit">{{publica_offre.intituler}}</h2>
+                <p>{{publica_offre.description}}</p>
+                <div class = "offreItem__describ--txt__info">
+                    <div class></div>
+                    <div></div>
+                </div>
             </div>
         </div>
     </div>

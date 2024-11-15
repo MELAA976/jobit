@@ -13,6 +13,8 @@ services:
       MYSQL_DATABASE: jobit
       MYSQL_USER: jobit
       MYSQL_PASSWORD: jobit
+    ports:
+      - 3306:3306
       
     volumes:
       - database_data:/var/lib/mysql
