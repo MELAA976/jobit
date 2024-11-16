@@ -10,11 +10,36 @@ use Symfony\Component\Routing\Attribute\Route;
 class AccueilController extends AbstractController
 {
     #[Route('/', name: 'app_accueil')]
+
     public function index(): Response
     {
-        
-        return $this->render('accueil/index.html.twig', [
-            'controller_name' => 'AccueilController',
-        ]);
+        //dd($this->getUser()->getRoles());
+        if ($this->getUser()) {
+            foreach ($this->getUser()->getRoles() as $role) {
+                $role = $role;
+            }
+
+            switch ($role) {
+                case 'ROLE_RECRUTEUR':
+                    $roleUser = 'Recruteur';
+                    break;
+                case 'ROLE_CANDIDAT':
+                    $roleUser = 'Candidat';
+                    break;
+                case 'ROLE_PARTENAIRE':
+                    $roleUser = 'Candidat';
+                    break;
+
+                default:
+
+                    break;
+            }
+
+            return $this->render('accueil/index.html.twig', [
+                'role' => $roleUser,
+            ]);
+        } else {
+            return $this->render('accueil/index.html.twig', []);
+        }
     }
 }

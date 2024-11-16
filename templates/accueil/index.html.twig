@@ -29,7 +29,12 @@
                         <i class="fa-solid fa-phone"></i>
 							<h3>{{app.user.telephone}}</h3>
 						</div>
-						<a href="{{ path('app_user_compte')}}">
+						<div class="accueil__title-connect__user__info__item--role">
+                        <i class="fa-regular fa-address-card"></i>
+							<h3>{{role}}</h3>
+						</div>
+						
+						<a href="{{ path('app_user_compte',{'id': app.user.id})}}">
 							<button>Mon Compte</button>
 						</a>
 					</div>

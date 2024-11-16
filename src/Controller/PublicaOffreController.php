@@ -3,12 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\OffreUser;
-use App\Entity\User;
 use App\Entity\PublicaOffre;
 use App\Form\OffreUserType;
 use App\Form\PublicaOffreType;
 use App\Repository\OffreUserRepository;
 use App\Repository\PublicaOffreRepository;
+use App\Security\Voter\OffreVoter;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,14 +22,14 @@ final class PublicaOffreController extends AbstractController
     #[Route(name: 'app_publica_offre_index', methods: ['GET'])]
     public function index(PublicaOffreRepository $publicaOffreRepository): Response
     {
-        
+
         return $this->render('publica_offre/index.html.twig', [
             'publica_offres' => $publicaOffreRepository->findAll(),
         ]);
     }
 
     #[Route('/new', name: 'app_publica_offre_new', methods: ['GET', 'POST'])]
-    //#[IsGranted('ROLE_RECRUTEUR')]
+    #[IsGranted('ROLE_RECRUTEUR')]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $publicaOffre = new PublicaOffre();
@@ -40,12 +40,12 @@ final class PublicaOffreController extends AbstractController
 
             // generation et insertion de la date de publication
             $publicaOffre->setDatePublication(new \DateTime());
-            
+
             //affectation de l'id de l'utilisateur
             $publicaOffre->setUser($this->getUser());
             $entityManager->persist($publicaOffre);
             $entityManager->flush();
-            
+
             //return $this->redirectToRoute('app_publica_offre_index', [], Response::HTTP_SEE_OTHER);
         }
 
@@ -71,46 +71,46 @@ final class PublicaOffreController extends AbstractController
 
         //creation de la condition de la verification de postullation
         $postule = false;
-        if (count($offreRepo) > 0){
+        if (count($offreRepo) > 0) {
             $postule = true;
         };
-        
+
         //dd($postule);
-        
-        
-        
+
+
+
         //Creation du formulaire
         $form = $this->createForm(OffreUserType::class, $offreUser);
         $form->handleRequest($request);
-       
+
         if ($form->isSubmitted() && $form->isValid()) {
 
             // ajout id de l'offre
             $offreUser->setOffre($publicaOffre);
-        
+
             // id de l'utilisateur
             $offreUser->setUser($this->getUser());
-    
+
             // date de postulation
             $offreUser->setDateCandidature(new \DateTime());
-          
+
             $entityManager->persist($offreUser);
             $entityManager->flush();
             return $this->redirectToRoute('app_publica_offre_index', [], Response::HTTP_SEE_OTHER);
         }
-        
+
         return $this->render('publica_offre/show.html.twig', [
             'publica_offre' => $publicaOffre,
             'form' => $form,
             'postule' => $postule,
-            
+
         ]);
     }
 
 
     #[Route('/{id}/edit', name: 'app_publica_offre_edit', methods: ['GET', 'POST'])]
-    //#[IsGranted('ROLE_RECRUTEUR')]
-    public function edit(Request $request, PublicaOffre $publicaOffre, EntityManagerInterface $entityManager): Response
+    #[IsGranted(OffreVoter::EDIT_OFFRE, subject: 'publicaOffre')]
+    public function edit(Request $request, PublicaOffre $publicaOffre, EntityManagerInterface $entityManager, int $id): Response
     {
         $form = $this->createForm(PublicaOffreType::class, $publicaOffre);
         $form->handleRequest($request);
@@ -132,7 +132,7 @@ final class PublicaOffreController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_publica_offre_delete', methods: ['POST'])]
-    //#[IsGranted('ROLE_RECRUTEUR')]
+    #[IsGranted(OffreVoter::EDIT_OFFRE, subject: 'publicaOffre')]
     public function delete(Request $request, PublicaOffre $publicaOffre, EntityManagerInterface $entityManager): Response
     {
         if ($this->isCsrfTokenValid('delete' . $publicaOffre->getId(), $request->getPayload()->getString('_token'))) {

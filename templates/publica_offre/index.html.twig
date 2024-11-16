@@ -8,7 +8,9 @@
 	<div class="offre">
 		<div class="offre__container">
 			<div class="offre__container__search">
+				{% if is_granted('ROLE_RECRUTEUR') %}
 				<a href="{{ path('app_publica_offre_new') }}"><button>Ajouter une Offre</button></a>
+				{% endif %}
 			</div>
 
 			<div class="offre__container__result">

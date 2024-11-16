@@ -1,28 +1,27 @@
-
-@import 'sass/base/typography';
-@import 'sass/abstracts/variables';
-@import 'sass/abstracts/mixins';
-@import 'sass/components/bar';
+@import "sass/base/typography";
+@import "sass/abstracts/variables";
+@import "sass/abstracts/mixins";
+@import "sass/abstracts/placeholders";
+@import "sass/components/bar";
 
 body {
-    display: grid;
-    background-color: $colorBGClaire;
-    grid-template-areas:
+  display: grid;
+  background-color: $colorBGClaire;
+  grid-template-areas:
     "nav"
     "containerbody"
     "footer";
   grid-template-rows: 7vh 86vh 7vh;
   grid-template-columns: 1fr;
-
 }
 
-@import 'sass/layout/header';
+@import "sass/layout/header";
 
-.containerBody{
-    grid-area: containerbody;
+.containerBody {
+  grid-area: containerbody;
 }
 
-@import 'sass/layout/footer';
-@import 'sass/layout/accueil';
-@import 'sass/layout/offre';
-@import 'sass/layout/offreitem';
+@import "sass/layout/footer";
+@import "sass/layout/accueil";
+@import "sass/layout/offre";
+@import "sass/layout/offreitem";
