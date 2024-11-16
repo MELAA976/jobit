@@ -1,5 +1,5 @@
 .offreItem{
-    background-color: green;
+    //background-color: green;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -8,7 +8,7 @@
     height: 100%;
 
     &__entreprise{
-        background-color: brown;
+        //background-color: brown;
         width: 80%;
         height: 15%;
         display: flex;
@@ -16,10 +16,12 @@
         justify-content: space-between;
         & > h1{
             display: inline;
+            
         }
         &--present{
-            background-color: cadetblue;
+            //background-color: cadetblue;
             width: 40%;
+            
             & > p{
                 font-size: 0.8rem;
             }
@@ -27,15 +29,16 @@
     }
 
     &__describ{
+        
         width: 80%;
         height: 60%;
         border-radius: 20px;
         background-color: $colorBGSOmbre;
-        color: white;
+        color:  $colorGris;
         display: flex;
         justify-content: space-between;
         &--img{
-            background-color: yellow;
+            //background-color: yellow;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -47,18 +50,19 @@
         }
 
         &--txt{
-            background-color: gray;
+            //background-color: gray;
             width: 45%;
             &__cat{
                 & > a{
                     text-decoration: none;
                     font-weight: 100;
                     font-size: 1.1rem;
-                    color: $colorBlue;
+                    color: $colorBlueIcon;
                 }
             }
             &__intit{
                 font-size: 2.5rem;
+                color: white;
             }
 
             &__descrip{
@@ -66,26 +70,85 @@
                 height: 40%;
                 overflow: auto;
                 font-size: 0.9rem;
-                background-color: cornflowerblue;
+                //background-color: cornflowerblue;
             }
 
             &__info{
-                background-color: darkgoldenrod;
+                //background-color: darkgoldenrod;
                 display: flex;
                 height: 35%;
+                font-size: 0.8rem;
+                
                 &__lieu{
-                    background-color: darkgreen;
+                    //background-color: darkgreen;
                     width: 80%;
                     height: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: end;
+                   
+                    & > div{
+                        display: flex;
+                        
+                        width: 50%;
+                        & > i{
+                            padding-right: 3%;
+                        }
+                        
+                    }
                 }
 
                 &__btn{
-                    background-color: darkviolet;
+                    //background-color: darkviolet;
                     width: 20%;
+                    display: flex;
+                    align-items: flex-end;
+                    
+                   
+                    
                 }
             }
         }
 
         
     }
+    &__btnEdit{
+        //background-color: fuchsia;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        width: 20%;
+        & > a{
+            text-decoration: none;
+        }
+        & > a:nth-child(2){
+            color: green;
+        }
+
+    
+    }
+}
+
+.btnPst{
+    @include btn($colorBlue, 115%);
+    border-radius: 20px;
+    &:disabled{
+        
+        @include btn(gray, 115%);
+    }
+}
+
+
+
+.btnSup{
+    color: red;
+}
+
+i{
+    color: $colorBlueIcon;
+    font-size: 1.2rem;
+}
+
+em{
+    color: white;
 }

@@ -24,28 +24,35 @@
                 
                 <div class = "offreItem__describ--txt__info">
                     <div class = "offreItem__describ--txt__info__lieu">
-                        <div class = "offreItem__describ--txt__info__lieu--date"><p><i class="fa-solid fa-calendar-days"></i> Publier le: {{publica_offre.datePublication|date('Y-m-d')}} </p><p>{{ publica_offre.dateModification ? '<i class="fa-regular fa-calendar-check"></i>' publica_offre.dateModification|date('Y-m-d') : '<i class="fa-regular fa-calendar-check"></i>' }}</p></div>
-                        <div class = "offreItem__describ--txt__info__lieu--lieu"><p><i class="fa-solid fa-user"></i> type de contrat: {{publica_offre.typeContrat.nom}}</p></div>
-                        <div class = "offreItem__describ--txt__info__lieu--type"><p><i class="fa-solid fa-location-dot"></i> Lieu: {{publica_offre.lieu}}</p></div>
+                        <div class = "offreItem__describ--txt__info__lieu--date"><i class="fa-solid fa-calendar-days"></i><p>
+                         Publier le: <em>{{publica_offre.datePublication|date('d.m.Y')}} </em></p></div>
+                        {% if publica_offre.dateModification %}
+                        
+                         <div class = "offreItem__describ--txt__info__lieu--dateModif"><i class="fa-regular fa-calendar-check"></i><p>  Modifier le: <em>{{ publica_offre.dateModification ? publica_offre.dateModification|date('d.m.Y') : '' }}</em></p></div>
+                        {% endif %}
+                       
+                        <div class = "offreItem__describ--txt__info__lieu--lieu"><i class="fa-solid fa-file-signature"></i><p>  type de contrat: <em>{{publica_offre.typeContrat.nom}}</em></p></div>
+                        <div class = "offreItem__describ--txt__info__lieu--type"><i class="fa-solid fa-location-dot"></i><p> Lieu: <em>{{publica_offre.lieu}}</em></p></div>
                     </div>
                     <div class = "offreItem__describ--txt__info__btn">
-                        {{ form_start(form) }}
+                         {{ form_start(form) }}
                             {{ form_widget(form) }}
                             {# verification de l'etat de postullation  #}
                             {# verifier si l'utilisateur actuelle a deja postuller a cette offre et desactiver le boutton #}
-                                <input type="submit" value="Postuler" {% if postule %}disabled="disabled"{% endif %}>
+                                <button type ="submit" class = "btnPst" {% if postule %}disabled="disabled"{% endif %}>Postuler</button>
                             {{ form_end(form) }}
                     </div>
                     
                 </div>
             </div>
                 
-                
             </div>
-            <a href="{{ path('app_publica_offre_index') }}">back to list</a>
-
-    <a href="{{ path('app_publica_offre_edit', {'id': publica_offre.id}) }}">edit</a>
-    {{ include('publica_offre/_delete_form.html.twig') }}
+            <div class = "offreItem__btnEdit">
+                <a href="{{ path('app_publica_offre_index') }}">Les offres</a>
+                <a href="{{ path('app_publica_offre_edit', {'id': publica_offre.id}) }}">Modifier</a>
+                    {{ include('publica_offre/_delete_form.html.twig') }}
+            </div>
+           
         </div>
 
          
