@@ -11,7 +11,7 @@ console.log('This log comes from assets/app.js - welcome to AssetMapper! 🎉');
 
 
 
-if (document.title == "Register") {
+/*if (document.title == "Register") {
 
     
 let typeUser = document.querySelector("#typeUser");
@@ -116,7 +116,7 @@ switch (valueSelectType) {
 }
 
 
-if (document.title == "New PublicaOffre") {
+/*if (document.title == "New PublicaOffre") {
     
     //creation de la condition d'affichage de  la duree de contrant en CDD
     let typeContrat = document.getElementById("publica_offre_typeContrat");
@@ -145,5 +145,5 @@ category.style.display = "none"
  })
 
 
-}
+}*/
 

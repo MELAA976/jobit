@@ -3,35 +3,18 @@
 {% block title %}Register{% endblock %}
 
 {% block body %}
+    <div class = "formContainer container-fluid">
     <h1>S'enregistrer</h1>
 
-<label for="userType">Selectionner votre type d'utilisation:</label>
+<!--<label for="userType">Selectionner votre type d'utilisation:</label>
 <select name="userType" id="typeUser"  id="userType">
     <option value= "" selected disabled>selectionner un element</option>
      <option value="candidat">Candidat</option>
     <option value="recruteur">Recruteur</option>
     <option value="partenaire">Partenaire</option>
-</select>
+</select>-->
+<twig:Register/>
+</div>
 
-
-
-    {{ form_errors(registrationForm) }}
-
-    {{ form_start(registrationForm, {'attr': {'id': 'formInscription'}}) }}
-        {{ form_row(registrationForm.nom,{'attr': {'class': 'formChild'}} ) }}
-        {{ form_row(registrationForm.prenom,{'attr': {'class': 'formChild'}}) }}
-        {{ form_row(registrationForm.date_naissance,{'attr': {'class': 'formChild'}}) }}
-        {{ form_row(registrationForm.telephone,{'attr': {'class': 'formChild'}}) }}
-        {{ form_row(registrationForm.photo,{'attr': {'class': 'formChild'}}) }}
-        {{ form_row(registrationForm.presentation,{'attr': {'class': 'formChild'}}) }}
-        {{ form_row(registrationForm.site_web,{'attr': {'class': 'formChild'}}) }}
-        {{ form_row(registrationForm.logo,{'attr': {'class': 'formChild'}}) }}
-        {{ form_row(registrationForm.adresse,{'attr': {'class': 'formChild'}}) }}
-        {{ form_row(registrationForm.email,{'attr': {'class': 'formChild'}}) }}
-        {{ form_row(registrationForm.plainPassword,{label: 'Password' }) }}
-        {{form_row(registrationForm.entreprise,{'attr': {'class': 'formChild'}})}}
-        {{ form_row(registrationForm.agreeTerms) }}
-
-        <button type="submit" class="btn">Register</button>
-    {{ form_end(registrationForm) }}
+    
 {% endblock %}

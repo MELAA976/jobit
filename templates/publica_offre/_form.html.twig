@@ -1,6 +1,12 @@
 
 
-{{ form_start(formPubli) }}
+<twig:Publicaoffre/>
+
+
+
+
+
+{#{ form_start(formPubli) }}
      {{ form_row(formPubli.intituler) }}
      {{ form_row(formPubli.description) }}
     
@@ -15,7 +21,7 @@
      </turbo-frame>
 
     <button class="btn">{{ button_label|default('Enregistrer') }}</button>
-{{ form_end(formPubli) }}
+{{ form_end(formPubli) }#}
 
 
 

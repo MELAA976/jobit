@@ -20,58 +20,59 @@ class RegistrationController extends AbstractController
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
-           
+
+
+
             $dataForm = $form->getData();
-            
-            //recuperation du type d'utilisateur via le cookies et JavaScript
-            $userType = $_COOKIE['userType'];
+            //dd($dataForm);
+            $roles = $dataForm->getRoles();
 
-            //attribution des roles 
-            if (isset($userType) && !empty($userType)) {
-
-                switch ($userType) {
-
-                    case 'candidat':
-                        $user->setRoles(array('ROLE_CANDIDAT'));
-                        $photoUser = $form['photo']->getData(); //selection de la photo
-                        $fileName = uniqid() . '.' . $photoUser->guessExtension(); // creation du nom du fichier
-                        $dataForm->setPhoto($fileName); //affectation du nom au fichier
-                        $photoUser->move($this->getParameter('photo_profiles'), $fileName); //deplacement du fichier dans son dossier
-                        $user->setToken(null);// rentre null les cases du formulaire non utilisé
-                        $user->setLogo(null);
-                        $user->setSiteWeb(null);
-                        $user->setEntreprise(null);
-                        //dd($user);
-                        break;
-
-                    case 'recruteur':
-                        $user->setRoles(array('ROLE_RECRUTEUR'));
-                        $photoUser = $form['photo']->getData();
-                        $fileName = uniqid() . '.' . $photoUser->guessExtension();
-                        $dataForm->setPhoto($fileName);
-                        $photoUser->move($this->getParameter('photo_profiles'), $fileName);
-                        $user->setToken(null);// rentre null les cases du formulaire non utilisé
-                        $user->setLogo(null);
-                        $user->setSiteWeb(null);
-                        break;
-
-
-                    case 'partenaire':
-                        $user->setRoles(array('ROLE_PARTENAIRE'));
-                        $logoPartn = $form['logo']->getData();
-                        $fileName = uniqid() . '.' . $logoPartn->guessExtension();
-                        $dataForm->setLogo($fileName);
-                        $logoPartn->move($this->getParameter('logo_partenaires'), $fileName);
-                        $user->setEntreprise(null);
-                        $user->setPrenom(null);
-                        $user->setDateNaissance(null);
-                        $user->setPrenom(null);
-                        $user->setPhoto(null);
-                        $user->setPrenom(null);
-                        $user->setPresentation(null);
-                        break;
-                }
+            foreach ($roles as $role) {
+                $role = $role;
             }
+
+            switch ($role) {
+
+                case "ROLE_CANDIDAT":
+                    $photoUser = $form['photo']->getData(); //selection de la photo
+                    $fileName = uniqid() . '.' . $photoUser->guessExtension(); // creation du nom du fichier
+                    $dataForm->setPhoto($fileName); //affectation du nom au fichier
+                    $photoUser->move($this->getParameter('photo_profiles'), $fileName); //deplacement du fichier dans son dossier
+                    $user->setToken(null); // rentre null les cases du formulaire non utilisé
+                    $user->setLogo(null);
+                    $user->setSiteWeb(null);
+                    $user->setEntreprise(null);
+                    //dd($user);
+                    break;
+
+                case "ROLE_RECRUTEUR":
+                    //$user->setRoles(array('ROLE_RECRUTEUR'));
+                    $photoUser = $form['photo']->getData();
+                    $fileName = uniqid() . '.' . $photoUser->guessExtension();
+                    $dataForm->setPhoto($fileName);
+                    $photoUser->move($this->getParameter('photo_profiles'), $fileName);
+                    $user->setToken(null); // rendre null les cases du formulaire non utilisé
+                    $user->setLogo(null);
+                    $user->setSiteWeb(null);
+                    break;
+
+
+                case 'ROLE_PARTENAIRE':
+                    //$user->setRoles(array('ROLE_PARTENAIRE'));
+                    $logoPartn = $form['logo']->getData();
+                    $fileName = uniqid() . '.' . $logoPartn->guessExtension();
+                    $dataForm->setLogo($fileName);
+                    $logoPartn->move($this->getParameter('logo_partenaires'), $fileName);
+                    $user->setEntreprise(null);
+                    $user->setPrenom(null);
+                    $user->setDateNaissance(null);
+                    $user->setPrenom(null);
+                    $user->setPhoto(null);
+                    $user->setPrenom(null);
+                    $user->setPresentation(null);
+                    break;
+            }
+
 
 
 
@@ -85,7 +86,7 @@ class RegistrationController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            
+
 
             // do anything else you need here, like send an email
 
@@ -96,5 +97,4 @@ class RegistrationController extends AbstractController
             'registrationForm' => $form,
         ]);
     }
-
 }

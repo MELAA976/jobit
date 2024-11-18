@@ -46,7 +46,7 @@ final class PublicaOffreController extends AbstractController
         //ajout de publicartion
 
         if ($formPubli->isSubmitted() && $formPubli->isValid()) {
-            //dd($formPubli);
+
             // generation et insertion de la date de publication
             $publicaOffre->setDatePublication(new \DateTime());
 
@@ -67,8 +67,8 @@ final class PublicaOffreController extends AbstractController
 
 
         return $this->render('publica_offre/new.html.twig', [
-            'formCat' => $formCat,
-            'category' => $category,
+            /*'formCat' => $formCat,*/
+            /*'category' => $category,*/
             'publica_offre' => $publicaOffre,
             'formPubli' => $formPubli,
 

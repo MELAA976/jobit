@@ -1,0 +1,26 @@
+<div{{attributes}}>
+
+
+{{ form_start(form) }}
+     {{ form_row(form.intituler) }}
+     {{ form_row(form.description) }}
+    
+     {{ form_row(form.lieu) }}
+     {{ form_row(form.typeContrat) }}
+     {% dump(form ) %}
+     
+     {% if form.duree is defined %}
+    {{ form_row(form.duree) }}
+    {% endif %}
+     
+      
+    {{ form_row(form.category) }}
+
+    
+    <turbo-frame id= "newCat"> 
+     <a href="{{ path('app_category_new')}}" >Ajouter une categorie</a>
+     </turbo-frame>
+    
+    <button class="btn">{{ button_label|default('Enregistrer') }}</button>
+{{ form_end(form) }}
+</div>

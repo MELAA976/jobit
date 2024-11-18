@@ -48,7 +48,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $adresse = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(type: "bigint", nullable: true)]
     private ?int $telephone = null;
 
     #[ORM\Column(length: 255, nullable: true)]
@@ -352,5 +352,4 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-    
 }
