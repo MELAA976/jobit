@@ -1,21 +1,21 @@
 
 
-{{ form_start(form) }}
+{{ form_start(formPubli) }}
+     {{ form_row(formPubli.intituler) }}
+     {{ form_row(formPubli.description) }}
+    
+     {{ form_row(formPubli.lieu) }}
+     {{ form_row(formPubli.typeContrat) }}
+     {{ form_row(formPubli.duree) }}
+      
+    {{ form_row(formPubli.category) }}
+    
+    <turbo-frame id= "newCat"> 
+     <a href="{{ path('app_category_new')}}">Ajouter une categorie</a>
+     </turbo-frame>
 
-     {{ form_row(form.intituler) }}
-     {{ form_row(form.description) }}
-    {#{ form_row(form.datePublication )}#}
-    {#{ form_row(form.dateModification) }#}
-     {#% if app.request.pathInfo == "/publica/offre/new" %}
-        {{ form_row(form.datePublication) }} {#a #}
-    {#% else %}
-        {{ form_row(form.dateModification) }}
-
-     {% endif %#}
-
-     {{ form_row(form.lieu) }}
-     {{ form_row(form.typeContrat) }}
-     {{ form_row(form.duree) }}
-     {{ form_row(form.category) }}
     <button class="btn">{{ button_label|default('Enregistrer') }}</button>
-{{ form_end(form) }}
+{{ form_end(formPubli) }}
+
+
+

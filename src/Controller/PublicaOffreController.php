@@ -2,8 +2,10 @@
 
 namespace App\Controller;
 
+use App\Entity\Category;
 use App\Entity\OffreUser;
 use App\Entity\PublicaOffre;
+use App\Form\CategoryType;
 use App\Form\OffreUserType;
 use App\Form\PublicaOffreType;
 use App\Repository\OffreUserRepository;
@@ -33,11 +35,18 @@ final class PublicaOffreController extends AbstractController
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
         $publicaOffre = new PublicaOffre();
-        $form = $this->createForm(PublicaOffreType::class, $publicaOffre);
-        $form->handleRequest($request);
+        $formPubli = $this->createForm(PublicaOffreType::class, $publicaOffre);
+        $formPubli->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
+        //ajout de categorie
+        $category = new Category();
+        $formCat = $this->createForm(CategoryType::class, $category);
+        $formCat->handleRequest($request);
 
+        //ajout de publicartion
+
+        if ($formPubli->isSubmitted() && $formPubli->isValid()) {
+            //dd($formPubli);
             // generation et insertion de la date de publication
             $publicaOffre->setDatePublication(new \DateTime());
 
@@ -46,12 +55,23 @@ final class PublicaOffreController extends AbstractController
             $entityManager->persist($publicaOffre);
             $entityManager->flush();
 
-            //return $this->redirectToRoute('app_publica_offre_index', [], Response::HTTP_SEE_OTHER);
+
+            return $this->redirectToRoute('app_publica_offre_index', [], Response::HTTP_SEE_OTHER);
         }
 
+        if ($formCat->isSubmitted() && $formCat->isValid()) {
+            $entityManager->persist($category);
+            $entityManager->flush();
+        }
+
+
+
         return $this->render('publica_offre/new.html.twig', [
+            'formCat' => $formCat,
+            'category' => $category,
             'publica_offre' => $publicaOffre,
-            'form' => $form,
+            'formPubli' => $formPubli,
+
         ]);
     }
 

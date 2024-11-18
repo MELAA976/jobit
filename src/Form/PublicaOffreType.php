@@ -24,7 +24,7 @@ class PublicaOffreType extends AbstractType
                 'widget' => 'single_text',
             ])*/
             ->add('lieu')
-            ->add('duree')
+
             ->add('category', EntityType::class, [
                 'class' => Category::class,
                 'choice_label' => 'nom',
@@ -36,7 +36,9 @@ class PublicaOffreType extends AbstractType
             ->add('typeContrat', EntityType::class, [
                 'class' => TypeContrat::class,
                 'choice_label' => 'nom',
+                'multiple' => false,
             ])
+            ->add('duree')
         ;
     }
 

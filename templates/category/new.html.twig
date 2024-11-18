@@ -1,4 +1,14 @@
-{% extends 'base.html.twig' %}
+
+<turbo-frame id= "newCat"> 
+{#% extends 'publica_offre/new.html.twig' %#}
+
+    {{ include('category/_form.html.twig') }}
+
+</turbo-frame> 
+
+
+
+{#% extends 'base.html.twig' %}
 
 {% block title %}New Category{% endblock %}
 
@@ -6,6 +16,5 @@
     <h1>Create new Category</h1>
 
     {{ include('category/_form.html.twig') }}
-
     <a href="{{ path('app_category_index') }}">back to list</a>
-{% endblock %}
+{% endblock %#}

@@ -20,6 +20,8 @@ let formChild = document.querySelectorAll(".formChild");
 
 
 
+
+
 formInscription.style.display = "none";
 
 formChild.forEach(
@@ -119,6 +121,10 @@ if (document.title == "New PublicaOffre") {
     //creation de la condition d'affichage de  la duree de contrant en CDD
     let typeContrat = document.getElementById("publica_offre_typeContrat");
     let dureeCdd = document.getElementById("publica_offre_duree");
+    let addCat = document.querySelector("#addCat");
+    let category = document.querySelector('#category')
+
+    //console.log(addCat);
     //console.log(typeContrat);
 
     typeContrat.addEventListener("change", ()=>{
@@ -132,8 +138,12 @@ if (document.title == "New PublicaOffre") {
             dureeCdd.parentNode.style.display = "block";
         }
  })
+
+category.style.display = "none"
+ addCat.addEventListener("click", ()=>{
+    category.style.display = "none"
+ })
+
+
 }
-
-
-
 
