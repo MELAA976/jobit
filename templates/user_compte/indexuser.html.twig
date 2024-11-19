@@ -1,12 +1,18 @@
 {% extends 'base.html.twig' %}
-{% block title %}compte utilisateur{% endblock %}
+{% block title %}compte Utilisateur{% endblock %}
 
 {% block body %}
-<h1>compte utilisateur</h1>
-    <div class = "Container">
-    <a href="{{ path('app_user_compte_info',{'id': app.user.id})}}">Mes offres</a>
-    <a href="{{ path('app_user_compte_offrepst',{'id': app.user.id})}}">Mes infos</a>
-        {% block infonuser %}{% endblock %}
+
+    <div class = "userCompte">
+    <div class = "userCompte__link">
+        <a href="{{ path('app_user_compte_info',{'id': app.user.id})}}" class = "userCompte__link--item">Mes infos</a>
+        <a href="{{ path('app_user_compte_offrepst',{'id': app.user.id})}}"  class = "userCompte__link--item">Mes Offres Candidatées</a>
+        <a href="{{ path('app_user_compte_offrepst',{'id': app.user.id})}}"  class = "userCompte__link--item">Mes Offres Publiée</a>
+    </div>
+     <div class = "userCompte__container--vue">
+            {% block infonuser %}{% endblock %}
+        </div>
+        
     </div>
 
 {% endblock %}

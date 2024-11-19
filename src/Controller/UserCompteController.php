@@ -13,6 +13,7 @@ final class UserCompteController extends AbstractController
 {
     #[Route(name: 'app_user_compte')]
     
+    
     public function index(int $id): Response
     {
         $user = $this->getUser();
@@ -27,7 +28,7 @@ final class UserCompteController extends AbstractController
 
 
     #[Route('/infouser', name: 'app_user_compte_info')]
-    public function infUser(): Response
+    public function infUser(int $id): Response
     {
         $user = $this->getUser();
 
@@ -39,13 +40,25 @@ final class UserCompteController extends AbstractController
     }
 
     #[Route('/offrepst', name: 'app_user_compte_offrepst')]
-    public function infUserOffre(): Response
+    public function infUserOffre(int $id): Response
     {
         $user = $this->getUser();
 
         //info sur l'utilisateur
 
         return $this->render('user_compte/offrepst.html.twig', [
+            'user' => $user,
+        ]);
+    }
+
+    #[Route('/offrepst', name: 'app_user_compte_offrepst')]
+    public function infoUserOffrePubli(int $id): Response
+    {
+        $user = $this->getUser();
+
+        //info sur l'utilisateur
+
+        return $this->render('user_compte/offrepublie.html.twig', [
             'user' => $user,
         ]);
     }
