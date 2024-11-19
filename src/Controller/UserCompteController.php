@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Controller;
-
 use App\Security\Voter\AccesUserVoter;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -14,6 +12,7 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 final class UserCompteController extends AbstractController
 {
     #[Route(name: 'app_user_compte')]
+    
     public function index(int $id): Response
     {
         $user = $this->getUser();

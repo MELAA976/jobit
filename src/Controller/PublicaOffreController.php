@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Controller;
-
 use App\Entity\Category;
 use App\Entity\OffreUser;
 use App\Entity\PublicaOffre;
@@ -81,7 +80,7 @@ final class PublicaOffreController extends AbstractController
         //Création d'un offre user
         $offreUser = new OffreUser();
         $idUser = $this->getUser();
-
+        
 
         //verification si on a deja postuller a cet offre
         $offreRepo = $offre->findBy([
@@ -95,7 +94,9 @@ final class PublicaOffreController extends AbstractController
             $postule = true;
         };
 
-        //dd($postule);
+        $routeName = $request->attributes->get('_route'); //recuperation de la route actuelle
+        $routeParameters = $request->attributes->get('_route_params'); //recuperation de l'id de la route
+        
 
 
 
@@ -116,7 +117,9 @@ final class PublicaOffreController extends AbstractController
 
             $entityManager->persist($offreUser);
             $entityManager->flush();
-            return $this->redirectToRoute('app_publica_offre_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute( $routeName, $routeParameters); 
+            /* redirection vers la route actuel*/
+            
         }
 
         return $this->render('publica_offre/show.html.twig', [

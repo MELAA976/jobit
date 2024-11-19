@@ -49,10 +49,11 @@
 
         {% if (form.entreprise) is defined %}
          {{ form_row(form.entreprise) }}
+         <turbo-frame id= "newEntreprise"> 
+        <a href="{{path('app_entreprise_new')}}">Ajouter une entreprise</a>
+        </turbo-frame>
+         
         {% endif %}
-
-    
-        
         {{ form_row(form.agreeTerms) }}
 
         <button type="submit" class="btn">Enregister</button>

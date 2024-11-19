@@ -16,7 +16,10 @@
 			<div class="offre__container__result">
 				{% for publica_offre in publica_offres %}
 					<div class="card offre__container__result__item">
+					<div class="card offre__container__result__item__img">
+					
 						<img src={{ asset('uploads/images/logo_entreprises/'~ publica_offre.user.entreprise.logo ) }} alt="" class="card-img-top" alt="">
+						</div>
 						<div class="offre__container__result__item__describ">
 							<div class="card offre__container__result__item__describ__txt">
 								<h5 class=" offre__container__result__item__describ__txt--intit card-title">{{publica_offre.intituler}}</h5>
