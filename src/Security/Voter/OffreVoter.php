@@ -37,17 +37,14 @@ final class OffreVoter extends Voter
         //dd($user);
         //dd($subject->getUser()->getId());
 
-        // ... (check conditions and return true to grant permission) ...
+
         switch ($attribute) {
             case self::EDIT_OFFRE:
-                // logic to determine if the user can EDIT
-                // return true or false
+
                 return $this->canEditPubli($subject, $user);
                 break;
 
                 /*case self::VIEW:
-                // logic to determine if the user can VIEW
-                // return true or false
                 break;*/
         }
 

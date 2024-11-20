@@ -78,17 +78,16 @@ final class PublicaOffreController extends AbstractController
     #[Route('/{id}', name: 'app_publica_offre_show', methods: ['GET', 'POST'])]
     public function show(PublicaOffre $publicaOffre, Request $request, EntityManagerInterface $entityManager, OffreUserRepository $offre, $id): Response
     {
-        //Création d'un offre user
+
         $offreUser = new OffreUser();
         $idUser = $this->getUser();
 
-        //verification si on a deja postuller a cet offre
+        //creation de la condition de verification de candidature 
         $offreRepo = $offre->findBy([
             'offre' => $id,
             'user' => $idUser,
         ]);
 
-        //creation de la condition de la verification de postullation
         $postule = false;
         if (count($offreRepo) > 0) {
             $postule = true;
@@ -96,8 +95,6 @@ final class PublicaOffreController extends AbstractController
 
         $routeName = $request->attributes->get('_route'); //recuperation de la route actuelle
         $routeParameters = $request->attributes->get('_route_params'); //recuperation de l'id de la route
-
-
 
 
         //Creation du formulaire
@@ -112,7 +109,7 @@ final class PublicaOffreController extends AbstractController
             // id de l'utilisateur
             $offreUser->setUser($this->getUser());
 
-            // date de postulation
+            // date de candidature
             $offreUser->setDateCandidature(new \DateTime());
 
             $entityManager->persist($offreUser);

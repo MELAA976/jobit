@@ -1,4 +1,47 @@
 {% extends 'user_compte/indexuser.html.twig' %}
 {% block infonuser %}
-    <h1>Offres Publier</h1> 
+    <div class="compte offre">
+		<div class="offre__container">
+			<div class="offre__container__search">
+				<a href="{{ path('app_publica_offre_new') }}"><button>Ajouter une Offre</button></a>
+			</div>
+
+			<div class="offre__container__result">
+				{% for offre in offrePublier %}
+                
+					<div class="card offre__container__result__item">
+					<div class="card offre__container__result__item__img">
+					
+						<img src={{ asset('uploads/images/logo_entreprises/'~ offre.user.entreprise.logo ) }} alt="" class="card-img-top" alt="">
+						</div>
+						<div class="offre__container__result__item__describ">
+							<div class="card offre__container__result__item__describ__txt">
+								<h5 class=" offre__container__result__item__describ__txt--intit card-title">{{offre.intituler}}</h5>
+								<h5 class=" offre__container__result__item__describ__txt--type card-title">{{offre.typeContrat.nom}}</h5>
+								
+								<h5 class=" offre__container__result__item__describ__txt--datePublic card-title">{{offre.datePublication 
+								? offre.datePublication|date('d.m.Y') : '' }}</h5>
+								<h5 class=" offre__container__result__item__describ__txt--type card-title">{{offre.lieu}}</h5>
+								<h5 class=" offre__container__result__item__describ__txt--duree card-title">{{offre.duree 
+								? offre.duree: '' }}</h5>
+								{# <p class="card-text">{{publica_offre.description}}</p> #}
+							</div>
+
+							<div class="offre__container__result__item__describ__btn">
+								<a href="{{ path('app_publica_offre_show', {'id': offre.id}) }}">
+									<button>
+										<i class="fa-solid fa-arrow-right"></i>
+									</button>
+
+								</a>
+							</div>
+						</div>
+
+					</div>
+				{% endfor %}
+			</div>
+
+
+		</div>
+	</div>
 {% endblock %}

@@ -29,6 +29,12 @@ class AccueilController extends AbstractController
                 case 'ROLE_PARTENAIRE':
                     $roleUser = 'Candidat';
                     break;
+                case 'ROLE_PARTENAIRE':
+                    $roleUser = 'Candidat';
+                    break;
+                case 'ROLE_ADMIN':
+                    $roleUser = 'admin';
+                    break;
 
                 default:
 

@@ -6,6 +6,7 @@
     <div class = "offreItem">
         
         <div class = "offreItem__entreprise">
+        
         <h1>{{publica_offre.user.entreprise.nom}}</h1>
         <div class = "offreItem__entreprise--present">
             <p>{{publica_offre.user.entreprise.presentation}}</p>
@@ -39,7 +40,7 @@
                     {% if is_granted('ROLE_CANDIDAT') %}
                          {{ form_start(form) }}
                             {{ form_widget(form) }}
-                            {# verification de l'etat de postullation  #}
+                            {# verification de l'etat de candidature #}
                             {# verifier si l'utilisateur actuelle a deja postuller a cette offre et desactiver le boutton #}
                                 <button type ="submit" class = "btnPst" {% if postule %}disabled="disabled"{% endif %}>Postuler</button>
                                 
@@ -47,12 +48,11 @@
                            
                                 
                             
-                            
-                             <turbo-frame id= "delPostu"> 
+                             <!--<turbo-frame id= "delPostu"> 
                               {% for idpostule in idpostules %}
                                     <a href="{{ path('app_offre_user_delete', {'id': idpostule.id})}}" >Supprimer</a>
                                     {% endfor %}
-                                </turbo-frame>
+                                </turbo-frame>-->
                     {% endif %}
                     </div>
                     

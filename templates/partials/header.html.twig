@@ -2,7 +2,7 @@
 	<nav class="navbar navbar-expand-lg bg-body-tertiary nav">
 		<div class="container">
 			<a class="logo navbar-brand" href="{{ path('app_accueil')}}">
-				<i class="logo__sac fa-solid fa-briefcase"></i>Job-It
+				<i class="logo__sac fa-solid fa-briefcase"></i>MYJOB
 			</a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" href="#offcanvasExample" aria-controls="offcanvasExample" aria-expanded="false" aria-label="Toggle navigation">
@@ -28,6 +28,11 @@
 						{% if app.user %} 
                     <li class="nav-item">
 						<a class="nav-link" href="{{ path('app_user_compte',{'id': app.user.id}) }}">Mon compte</a>
+					</li>
+					{% endif %}
+					{% if app.user and is_granted('ROLE_ADMIN') %} 
+                    <li class="nav-item">
+						<a class="nav-link" href="{{ path('admin',{'id': app.user.id}) }}">Mon compte admin</a>
 					</li>
 					{% endif %}
 				</ul>

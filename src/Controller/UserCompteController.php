@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\OffreUser;
 use App\Repository\OffreUserRepository;
+use App\Repository\PublicaOffreRepository;
 use App\Security\Voter\AccesUserVoter;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -63,14 +64,19 @@ final class UserCompteController extends AbstractController
     }
 
     #[Route('/offrepublie', name: 'app_user_compte_offrepublie')]
-    public function infoUserOffrePubli(int $id): Response
+    public function infoUserOffrePubli(int $id, PublicaOffreRepository $publicaOffre): Response
     {
+
         $user = $this->getUser();
+        $offreUserCree =  $publicaOffre->findBy(
+            ['User' => $id]
+        );
+        //dd($offreUserCree);
 
         //info sur l'utilisateur
 
         return $this->render('user_compte/offrepublie.html.twig', [
-            'user' => $user,
+            'offrePublier' => $offreUserCree,
         ]);
     }
 }
