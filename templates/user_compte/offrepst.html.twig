@@ -1,4 +1,52 @@
 {% extends 'user_compte/indexuser.html.twig' %}
 {% block infonuser %}
-    <h1>info Offres</h1> 
+  
+    <div class="offre">
+		<div class="offre__container">
+			<div class="offre__container__search">
+				{% if is_granted('ROLE_RECRUTEUR') %}
+				<a href="{{ path('app_publica_offre_new') }}"><button>Ajouter une Offre</button></a>
+				{% endif %}
+			</div>
+
+			<div class="offre__container__result">
+            
+				{% for offre in offreUserCandidat %}
+                
+					<div class="card offre__container__result__item">
+					<div class="card offre__container__result__item__img">
+					
+						<img src={{ asset('uploads/images/logo_entreprises/'~ offre.offre.user.entreprise.logo ) }} alt="" class="card-img-top" alt="">
+						</div>
+						<div class="offre__container__result__item__describ">
+							<div class="card offre__container__result__item__describ__txt">
+								<h5 class=" offre__container__result__item__describ__txt--intit card-title">{{offre.offre.intituler}}</h5>
+								<h5 class=" offre__container__result__item__describ__txt--type card-title">{{offre.offre.typeContrat.nom}}</h5>
+								
+								<h5 class=" offre__container__result__item__describ__txt--datePublic card-title">{{offre.offre.datePublication 
+								? offre.offre.datePublication|date('d.m.Y') : '' }}</h5>
+								<h5 class=" offre__container__result__item__describ__txt--type card-title">{{offre.offre.lieu}}</h5>
+								<h5 class=" offre__container__result__item__describ__txt--duree card-title">{{offre.offre.duree 
+								? offre.offre.duree: '' }}</h5>
+								{# <p class="card-text">{{publica_offre.description}}</p> #}
+							</div>
+
+							<div class="offre__container__result__item__describ__btn">
+								<a href="{{ path('app_publica_offre_show', {'id': offre.offre.id}) }}">
+									<button>
+										<i class="fa-solid fa-arrow-right"></i>
+									</button>
+
+								</a>
+							</div>
+						</div>
+
+					</div>
+				{% endfor %}
+			</div>
+
+
+		</div>
+	</div>
+    
 {% endblock %}

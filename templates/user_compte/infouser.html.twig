@@ -1,7 +1,36 @@
 {% extends 'user_compte/indexuser.html.twig' %}
 
 {% block infonuser %}
-    <h1>info utilisateur</h1> 
+    <div class = "compte infoUser">
+        <div class = "infoUser__container">
+        
+            <div class = "infoUser__container__ident">
+                <div class = "infoUser__container__ident__img">
+                    <img src="{{ asset('uploads/images/photo_profiles/'~ app.user.photo) }}" alt="">
+                </div>
+
+                <div class = "infoUser__container__ident__txt">
+                    <p>Mail: <em>{{app.user.email}}</em></p>
+                    <p>Role: <em>{%for role in app.user.roles %}{{role}} {% endfor %}</em></p>
+                    <p>Date de naissance: <em>{{app.user.dateNaissance ? app.user.dateNaissance|date('d.m.Y') : '' }}</em></p>
+                    <p>Adresse: <em>{{app.user.adresse}}</em></p>
+                    <p>Telephone: <em>{{app.user.telephone}}</em></p>
+                    
+                </div>
+            </div>
+            <div class = "infoUser__container__history">
+            <div class = "infoUser__container__history__name"><h2>{{app.user.nom}} {{app.user.prenom}}</h2></div>
+            <div class = "infoUser__container__history__describe">
+                <p>{{app.user.presentation}}</p>
+            </div>
+            </div>
+           
+        </div>
+         <div class = "infoUser__btnModif">
+                <a href="{{ path('app_user_edit', {'id': user.id}) }}"><button>Modifier</button></a>
+                
+            </div>
+        </div>
 {% endblock %}
  
 

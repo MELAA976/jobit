@@ -1,5 +1,9 @@
 <?php
+
 namespace App\Controller;
+
+use App\Entity\OffreUser;
+use App\Repository\OffreUserRepository;
 use App\Security\Voter\AccesUserVoter;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -12,18 +16,17 @@ use Symfony\Component\Security\Http\Attribute\IsGranted;
 final class UserCompteController extends AbstractController
 {
     #[Route(name: 'app_user_compte')]
-    
-    
+
+
     public function index(int $id): Response
     {
-        $user = $this->getUser();
+        //$user = $this->getUser();
         //dd($id);
 
         //info sur l'utilisateur
 
         return $this->render('user_compte/indexuser.html.twig', [
-            'user' => $user,
-        ]);
+            /*'user' => $user,*/]);
     }
 
 
@@ -40,18 +43,26 @@ final class UserCompteController extends AbstractController
     }
 
     #[Route('/offrepst', name: 'app_user_compte_offrepst')]
-    public function infUserOffre(int $id): Response
+    public function infUserOffre(OffreUserRepository $offreUserRepository, int $id): Response
     {
-        $user = $this->getUser();
+
+        //dd($offreUserRepository->findAll());
+
+        $offreUserCandidat =  $offreUserRepository->findBy(
+            ['user' => $id]
+        );
+        //dd($offreUserCandidat);
+
+
 
         //info sur l'utilisateur
 
         return $this->render('user_compte/offrepst.html.twig', [
-            'user' => $user,
+            'offreUserCandidat' => $offreUserCandidat,
         ]);
     }
 
-    #[Route('/offrepst', name: 'app_user_compte_offrepst')]
+    #[Route('/offrepublie', name: 'app_user_compte_offrepublie')]
     public function infoUserOffrePubli(int $id): Response
     {
         $user = $this->getUser();

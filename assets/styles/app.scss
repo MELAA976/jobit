@@ -4,7 +4,6 @@
 @import "sass/abstracts/placeholders";
 @import "sass/components/bar";
 @import "sass/components/form";
-@import "sass/components/usercompte";
 
 body {
   display: grid;
@@ -27,3 +26,5 @@ body {
 @import "sass/layout/accueil";
 @import "sass/layout/offre";
 @import "sass/layout/offreitem";
+@import "sass/layout/infouser";
+@import "sass/layout/usercompte";
